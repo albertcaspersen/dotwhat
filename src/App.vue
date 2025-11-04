@@ -274,6 +274,13 @@ html, body {
 
 /* Responsive grid - Keep 12 columns on all screen sizes */
 @media (max-width: 768px) {
+  .background-video {
+    width: auto;
+    height: auto;
+    object-fit: none;
+    object-position: center;
+  }
+
   .container {
     margin: 0;
     padding: 0 20px;
@@ -290,6 +297,13 @@ html, body {
 
 /* iPhone 15 and similar devices */
 @media (max-width: 430px) {
+  .background-video {
+    width: auto;
+    height: auto;
+    object-fit: none;
+    object-position: center;
+  }
+
   .container {
     margin: 0;
     padding: 0 15px;
