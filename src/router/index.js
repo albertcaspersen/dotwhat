@@ -8,16 +8,6 @@ import NewsPage from '../components/NewsPage.vue'
 import PrivacyPolicy from '../components/PrivacyPolicy.vue'
 import DomainAcquisitions from '../components/DomainAcquisitions.vue'
 
-// V2 Components (using new modules)
-import HomeV2 from '../components/HomeV2.vue'
-import ClientsV2 from '../components/ClientsV2.vue'
-import FAQV2 from '../components/FAQV2.vue'
-import NewsPageV2 from '../components/NewsPageV2.vue'
-import ContactV2 from '../components/ContactV2.vue'
-import TermsOfUseV2 from '../components/TermsOfUseV2.vue'
-import PrivacyPolicyV2 from '../components/PrivacyPolicyV2.vue'
-import DomainAcquisitionsV2 from '../components/DomainAcquisitionsV2.vue'
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -60,47 +50,6 @@ const router = createRouter({
       path: '/services/domain-acquisitions',
       name: 'domain-acquisitions',
       component: DomainAcquisitions
-    },
-    // V2 Routes (using new modules)
-    {
-      path: '/home-v2',
-      name: 'home-v2',
-      component: HomeV2
-    },
-    {
-      path: '/clients-v2',
-      name: 'clients-v2',
-      component: ClientsV2
-    },
-    {
-      path: '/faq-v2',
-      name: 'faq-v2',
-      component: FAQV2
-    },
-    {
-      path: '/news-v2',
-      name: 'news-v2',
-      component: NewsPageV2
-    },
-    {
-      path: '/contact-v2',
-      name: 'contact-v2',
-      component: ContactV2
-    },
-    {
-      path: '/terms-of-use-v2',
-      name: 'terms-of-use-v2',
-      component: TermsOfUseV2
-    },
-    {
-      path: '/privacy-policy-v2',
-      name: 'privacy-policy-v2',
-      component: PrivacyPolicyV2
-    },
-    {
-      path: '/services/domain-acquisitions-v2',
-      name: 'domain-acquisitions-v2',
-      component: DomainAcquisitionsV2
     }
   ],
   scrollBehavior(to, from, savedPosition) {
