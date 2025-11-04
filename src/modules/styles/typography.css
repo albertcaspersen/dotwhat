@@ -1,0 +1,106 @@
+/**
+ * Shared Typography Styles
+ * Consistent font families and text styles used across the site
+ */
+
+/* Font family utilities */
+.font-bevietnam-bold {
+  font-family: 'BeVietnamPro-Bold', sans-serif;
+}
+
+.font-bevietnam-regular {
+  font-family: 'BeVietnamPro-Regular', sans-serif;
+}
+
+.font-bevietnam-variable {
+  font-family: 'BeVietnamPro-Variable', sans-serif;
+}
+
+/* Common heading styles */
+.heading-primary {
+  font-family: 'BeVietnamPro-Bold', sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.heading-secondary {
+  font-family: 'BeVietnamPro-Regular', sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: white;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.heading-tertiary {
+  font-family: 'BeVietnamPro-Regular', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+}
+
+/* Body text styles */
+.body-text {
+  font-family: 'BeVietnamPro-Regular', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.body-text-large {
+  font-family: 'BeVietnamPro-Regular', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.subtitle-text {
+  font-family: 'BeVietnamPro-Regular', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgb(183, 184, 184);
+}
+
+/* Utility text colors */
+.text-white {
+  color: white;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-dimmed {
+  color: rgb(183, 184, 184);
+}
+
+.text-accent {
+  color: #10a28e;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .heading-primary {
+    font-size: 2.5rem;
+  }
+  
+  .heading-secondary {
+    font-size: 2rem;
+  }
+  
+  .heading-tertiary {
+    font-size: 1.5rem;
+  }
+  
+  .body-text-large {
+    font-size: 1rem;
+  }
+}
+

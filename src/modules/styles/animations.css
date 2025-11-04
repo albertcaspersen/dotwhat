@@ -1,0 +1,43 @@
+/**
+ * Shared Animation Styles
+ * Used across multiple pages for GSAP line reveal animations
+ */
+
+.line-wrapper {
+  display: block;
+  overflow: hidden;
+}
+
+.line {
+  display: block;
+}
+
+/* Optional: Add utility classes for common animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
