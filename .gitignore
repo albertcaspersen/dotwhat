@@ -29,6 +29,6 @@ coverage
 
 *.tsbuildinfo
 
-# Large video files
-*.mp4
+# Large video files (only specific ones)
+Skærmoptagelse*.mp4
 *.mov

@@ -9,10 +9,12 @@ import Home from './components/Home.vue'
 import glass from './components/glass.vue'
 import Content from './components/Content.vue'
 import Footer from './components/Footer.vue'
+import thylanderVideo from './assets/pics/thylander_hero.mp4'
 import { gsap } from 'gsap'
 
 const route = useRoute()
 const isLoading = ref(false) // Set to false to skip splash screen
+const videoRef = ref(null)
 
 const isFaqPage = computed(() => {
   return route.path.startsWith('/faq')
@@ -139,7 +141,22 @@ onUnmounted(() => {
   <SplashScreen v-if="isLoading" @completed="onAnimationComplete" />
   
   <div id="app" v-else>
-    <!-- Solid background -->
+    <!-- Background Video -->
+    <video 
+      v-if="(!isServicesPage && !isTermsPage && !isPrivacyPage) || isDomainAcquisitionsPage"
+      class="background-video" 
+      :class="{ 'video-dimmed': isContactPage }"
+      ref="videoRef" 
+      autoplay 
+      loop 
+      playsinline 
+      muted
+    >
+      <source :src="thylanderVideo" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <!-- Solid background that shows when video fades -->
     <div class="background-color"></div>
     
     <!-- Fixed Header Grid -->
@@ -177,6 +194,22 @@ onUnmounted(() => {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.background-video.video-dimmed {
+  opacity: 0.3; /* Afdæmpet video på contact siden */
 }
 
 .background-color {
