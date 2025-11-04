@@ -1,25 +1,31 @@
 <template>
-    <section class="home grid-item grid-home">
-      <h1 class="home-title" ref="titleRef">
-        <span class="line-wrapper"><span class="line" ref="line1">Smarter domain</span></span>
-        <span class="line-wrapper"><span class="line" ref="line2">strategies that strengthen</span></span>
-        <span class="line-wrapper"><span class="line" ref="line3">your digital presence.</span></span>
+    <section class="grid-item col-1-13 row-2 p-0 mt-home-top mb-home-bottom md:mt-home-top-tablet md:mb-home-bottom-tablet max-[430px]:mt-home-top-tablet max-[430px]:mb-home-bottom-mobile max-[430px]:p-0">
+      <h1 
+        ref="titleRef"
+        class="font-bevietnam-bold text-home-title font-medium text-white leading-[1.2] m-0 p-0 max-w-home-title fixed overflow-hidden pb-title-bottom md:text-home-title-md md:max-w-[90vw] md:relative max-[430px]:text-home-title-mobile max-[430px]:max-w-[90vw] max-[430px]:leading-[1.3] max-[430px]:pb-title-bottom-mobile max-[430px]:relative max-[393px]:text-home-title-sm max-[393px]:max-w-[85vw]"
+      >
+        <span class="block overflow-hidden"><span class="block" ref="line1">Smarter domain</span></span>
+        <span class="block overflow-hidden"><span class="block" ref="line2">strategies that strengthen</span></span>
+        <span class="block overflow-hidden"><span class="block" ref="line3">your digital presence.</span></span>
       </h1>
     </section>
     
     <!-- Description som separat grid item -->
-    <section class="home-description grid-item grid-description" ref="descriptionRef">
+    <section 
+      ref="descriptionRef"
+      class="grid-item col-1-13 row-3 p-0 mt-12 mb-8 font-bevietnam text-desc font-normal leading-[1.6] text-description-text max-w-home-desc fixed top-50vh md:text-desc-md md:max-w-[90vw] md:relative md:top-auto md:mt-8 max-[430px]:col-1-11 max-[430px]:row-2 max-[430px]:mt-desc-top-mobile max-[430px]:mb-desc-bottom-mobile max-[430px]:p-0 max-[430px]:text-desc-mobile max-[430px]:leading-[1.5] max-[430px]:max-w-[90vw] max-[430px]:relative max-[430px]:top-auto max-[393px]:text-desc-sm max-[393px]:max-w-[85vw]"
+    >
       <!-- Desktop version (3 lines) -->
-      <span class="line-wrapper desktop-desc"><span class="line" ref="descLine1">DotWhat is an independent domain consultancy that helps</span></span>
-      <span class="line-wrapper desktop-desc"><span class="line" ref="descLine2">companies acquire, sell and optimise their domain</span></span>
-      <span class="line-wrapper desktop-desc"><span class="line" ref="descLine3">portfolios for better returns & higher performance.</span></span>
+      <span class="block overflow-hidden !block max-[430px]:!hidden"><span class="block" ref="descLine1">DotWhat is an independent domain consultancy that helps</span></span>
+      <span class="block overflow-hidden !block max-[430px]:!hidden"><span class="block" ref="descLine2">companies acquire, sell and optimise their domain</span></span>
+      <span class="block overflow-hidden !block max-[430px]:!hidden"><span class="block" ref="descLine3">portfolios for better returns & higher performance.</span></span>
       
       <!-- Mobile version (5 lines) -->
-      <span class="line-wrapper mobile-desc"><span class="line" ref="descLine1Mobile">DotWhat is an independent domain</span></span>
-      <span class="line-wrapper mobile-desc"><span class="line" ref="descLine2Mobile">consultancy that helps companies</span></span>
-      <span class="line-wrapper mobile-desc"><span class="line" ref="descLine3Mobile">acquire, sell and optimise their domain</span></span>
-      <span class="line-wrapper mobile-desc"><span class="line" ref="descLine4Mobile">portfolios for better returns &</span></span>
-      <span class="line-wrapper mobile-desc"><span class="line" ref="descLine5Mobile">higher performance.</span></span>
+      <span class="block overflow-hidden !hidden max-[430px]:!block"><span class="block" ref="descLine1Mobile">DotWhat is an independent domain</span></span>
+      <span class="block overflow-hidden !hidden max-[430px]:!block"><span class="block" ref="descLine2Mobile">consultancy that helps companies</span></span>
+      <span class="block overflow-hidden !hidden max-[430px]:!block"><span class="block" ref="descLine3Mobile">acquire, sell and optimise their domain</span></span>
+      <span class="block overflow-hidden !hidden max-[430px]:!block"><span class="block" ref="descLine4Mobile">portfolios for better returns &</span></span>
+      <span class="block overflow-hidden !hidden max-[430px]:!block"><span class="block" ref="descLine5Mobile">higher performance.</span></span>
     </section>
     
     <!-- Company Logos Karrusel -->
@@ -166,156 +172,3 @@ import CompanyLogos from './CompanyLogos.vue'
     window.removeEventListener('scroll', handleScroll)
   })
   </script>
-  
-  <style scoped>
-  .grid-home {
-    grid-column: 1 / 13;
-    grid-row: 2;
-    padding: 0;
-    margin-top: 25vh;
-    margin-bottom: 27vh;
-  }
-  
-  .home-title {
-    font-family: 'BeVietnamPro-Bold', sans-serif;
-    font-size: 4rem;
-    font-weight: 500;
-    color: white;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-    max-width: 43vw;
-    position: fixed;
-    overflow: hidden; 
-    padding-bottom: 2vh;
-  }
-  
-  /* Wrapper for each line to control the reveal */
-  .line-wrapper {
-    display: block;
-    overflow: hidden;
-  }
-  
-  .line {
-    display: block;
-  }
-
-  .grid-description {
-    grid-column: 1 / 13;
-    grid-row: 3;
-    padding: 0;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-  }
-
-  .home-description {
-    font-family: 'BeVietnamPro-Regular', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: rgb(183, 184, 184);
-    max-width: 600px;
-    position: fixed;
-    top: 50vh;
-  }
-
-  .home-description .line-wrapper {
-    display: block;
-    overflow: hidden;
-  }
-
-  .home-description .line {
-    display: block;
-  }
-
-  /* Show desktop version by default, hide mobile */
-  .desktop-desc {
-    display: block !important;
-  }
-
-  .mobile-desc {
-    display: none !important;
-  }
-  
-  @media (max-width: 768px) {
-    .grid-home {
-      grid-column: 1 / 13;
-      margin-top: 20vh;
-      margin-bottom: 20vh;
-    }
-
-    .home-title {
-      font-size: 2.5rem;
-      max-width: 90vw;
-      position: relative;
-    }
-
-    .grid-description {
-      grid-column: 1 / 13;
-      margin-top: 2rem;
-    }
-
-    .home-description {
-      font-size: 1.1rem;
-      max-width: 90vw;
-      position: relative;
-      top: auto;
-    }
-  }
-
-  /* iPhone 15 og lignende devices (390-430px) */
-  @media (max-width: 430px) {
-    .grid-home {
-      grid-column: 1 / 13;
-      margin-top: 20vh;
-      margin-bottom: 15vh;
-      padding: 0 0rem;
-    }
-
-    .home-title {
-      font-size: 1.75rem;
-      max-width: 90vw;
-      line-height: 1.3;
-      padding-bottom: 1vh;
-      position: relative;
-    }
-
-    .grid-description {
-      grid-column: 1 / 11;
-      grid-row: 2;
-      margin-top: 20rem;
-      margin-bottom: 5.5rem;
-      padding: 0 0rem;
-    }
-
-    .home-description {
-      font-size: 1rem;
-      line-height: 1.5;
-      max-width: 90vw;
-      position: relative;
-      top: auto;
-    }
-
-    /* Show mobile version, hide desktop */
-    .desktop-desc {
-      display: none !important;
-    }
-
-    .mobile-desc {
-      display: block !important;
-    }
-  }
-
-  /* Specifik til iPhone 15 (393px) */
-  @media (max-width: 393px) {
-    .home-title {
-      font-size: 1.65rem;
-      max-width: 85vw;
-    }
-
-    .home-description {
-      font-size: 0.95rem;
-      max-width: 85vw;
-    }
-  }
-  </style>
