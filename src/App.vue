@@ -230,11 +230,13 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  margin: 0 60px;
+  margin: 0 auto;
+  padding: 2rem 60px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 20px;
-  padding: 2rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Mobile Contact Wrapper - hidden by default */
@@ -259,24 +261,29 @@ html, body {
 
 /* 12 Column Grid System */
 .container {
-  margin: 0 60px;
+  margin: 0 auto;
+  padding: 0 60px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: auto;
   gap: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 
 /* Responsive grid - Keep 12 columns on all screen sizes */
 @media (max-width: 768px) {
   .container {
-    margin: 0 20px;
+    margin: 0;
+    padding: 0 20px;
     grid-template-columns: repeat(12, 1fr);
     gap: 15px;
   }
   
   .header-container {
-    margin: 0 20px;
+    margin: 0;
+    padding: 0 20px;
     gap: 15px;
   }
 }
@@ -284,13 +291,15 @@ html, body {
 /* iPhone 15 and similar devices */
 @media (max-width: 430px) {
   .container {
-    margin: 0 15px;
+    margin: 0;
+    padding: 0 15px;
     gap: 10px;
     padding-bottom: 100px; /* Add padding for fixed Contact button at bottom */
   }
   
   .header-container {
-    margin: 0 15px;
+    margin: 0;
+    padding: 0 15px;
     gap: 10px;
   }
 

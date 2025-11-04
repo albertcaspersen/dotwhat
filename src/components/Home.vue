@@ -180,8 +180,8 @@ import CompanyLogos from './CompanyLogos.vue'
     font-family: 'BeVietnamPro-Bold', sans-serif;
     font-size: 4rem;
     font-weight: 500;
-    color: white;
     line-height: 1.2;
+    color: white;
     margin: 0;
     padding: 0;
     max-width: 43vw;

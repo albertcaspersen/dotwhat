@@ -69,6 +69,7 @@ const router = useRouter();
 
 const glassHeading = ref(null);
 const headingWidth = ref(0); // <-- NYT: Ref til at gemme den korrekte bredde
+const isMobile = ref(false);
 
 // ... andre refs (uændret)
 const card1 = ref(null);
@@ -93,27 +94,37 @@ const cards = [card1, card2, card3, card4, card5, card6];
 const intensity = 25;
 const scale = 1.2;
 
+const resetStickyHeading = () => {
+  if (!glassHeading.value) return;
+  glassHeading.value.style.width = '';
+  glassHeading.value.style.top = '';
+  glassHeading.value.style.left = '';
+  glassHeading.value.classList.remove('sticky-stopped');
+};
+
 const handleScroll = () => {
   if (glassHeading.value) {
-    // <-- NYT: Sæt den fastlåste bredde ved hver scroll for at forhindre "squashing"
-    glassHeading.value.style.width = `${headingWidth.value}px`;
-
-    const scrollY = window.scrollY;
-    const stopSticky = 1632;
-
-    if (scrollY >= stopSticky) {
-      if (!glassHeading.value.classList.contains('sticky-stopped')) {
-        const headingRect = glassHeading.value.getBoundingClientRect();
-        const parentRect = glassHeading.value.offsetParent.getBoundingClientRect();
-        const newTop = headingRect.top - parentRect.top;
-        const newLeft = headingRect.left - parentRect.left;
-
-        glassHeading.value.style.top = `${newTop}px`;
-        glassHeading.value.style.left = `${newLeft}px`;
-        glassHeading.value.classList.add('sticky-stopped');
-      }
+    if (isMobile.value) {
+      resetStickyHeading();
     } else {
-      if (glassHeading.value.classList.contains('sticky-stopped')) {
+      // <-- NYT: Sæt den fastlåste bredde ved hver scroll for at forhindre "squashing"
+      glassHeading.value.style.width = `${headingWidth.value}px`;
+
+      const scrollY = window.scrollY;
+      const stopSticky = 1632;
+
+      if (scrollY >= stopSticky) {
+        if (!glassHeading.value.classList.contains('sticky-stopped')) {
+          const headingRect = glassHeading.value.getBoundingClientRect();
+          const parentRect = glassHeading.value.offsetParent.getBoundingClientRect();
+          const newTop = headingRect.top - parentRect.top;
+          const newLeft = headingRect.left - parentRect.left;
+
+          glassHeading.value.style.top = `${newTop}px`;
+          glassHeading.value.style.left = `${newLeft}px`;
+          glassHeading.value.classList.add('sticky-stopped');
+        }
+      } else if (glassHeading.value.classList.contains('sticky-stopped')) {
         glassHeading.value.classList.remove('sticky-stopped');
         glassHeading.value.style.top = '';
         glassHeading.value.style.left = '';
@@ -147,6 +158,21 @@ const handleScroll = () => {
 
 };
 
+const updateIsMobile = () => {
+  const mobile = window.innerWidth <= 768;
+  isMobile.value = mobile;
+
+  if (!glassHeading.value) {
+    return;
+  }
+
+  if (mobile) {
+    resetStickyHeading();
+  } else {
+    headingWidth.value = glassHeading.value.offsetWidth;
+  }
+};
+
 onMounted(() => {
   // <-- NYT: Mål og gem den oprindelige bredde, når komponenten er loaded
   if (glassHeading.value) {
@@ -154,6 +180,8 @@ onMounted(() => {
   }
 
   window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', updateIsMobile, { passive: true });
+  updateIsMobile();
   handleScroll();
 
   // ... GSAP initialisering (uændret) ...
@@ -162,6 +190,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('resize', updateIsMobile);
 });
 </script>
 

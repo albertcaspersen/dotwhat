@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-white: #ffffff;
+  --color-primary: #10a28e;
+  --color-background: #111527;
+}
+
+@layer utilities {
+  .font-bevietnam-bold {
+    font-family: 'BeVietnamPro-Bold', sans-serif;
+  }
+
+  .font-bevietnam-regular {
+    font-family: 'BeVietnamPro-Regular', sans-serif;
+  }
+}
+
