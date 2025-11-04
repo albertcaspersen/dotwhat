@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import SplashScreen from './components/SplashScreen.vue'
 import Header from './components/Header.vue'
@@ -15,6 +15,10 @@ import { gsap } from 'gsap'
 const route = useRoute()
 const isLoading = ref(false) // Set to false to skip splash screen
 const videoRef = ref(null)
+const initialViewportHeight = ref(window.innerHeight)
+let resizeHandler = null
+let viewportHandler = null
+let scrollVideoHandler = null
 
 const isFaqPage = computed(() => {
   return route.path.startsWith('/faq')
@@ -117,8 +121,65 @@ watch([isContactPage, isClientsPage, isFaqPage, isNewsPage], ([isContact, isClie
   }
 }, { immediate: true })
 
+// Watch for videoRef to be available and set height
+watch(videoRef, (newValue) => {
+  if (newValue && window.innerWidth <= 768) {
+    nextTick(() => {
+      setVideoHeight()
+    })
+  }
+}, { immediate: true })
+
+const setVideoHeight = () => {
+  if (videoRef.value && window.innerWidth <= 768) {
+    // Lock video height to initial viewport height on mobile
+    videoRef.value.style.height = `${initialViewportHeight.value}px`
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  
+  // Set initial viewport height and lock video height on mobile
+  initialViewportHeight.value = window.innerHeight
+  setVideoHeight()
+  
+  // Set video height when video is loaded
+  if (videoRef.value) {
+    videoRef.value.addEventListener('loadedmetadata', () => {
+      setVideoHeight()
+    })
+  }
+  
+  // Handle resize events but keep video height locked on mobile
+  resizeHandler = () => {
+    if (window.innerWidth <= 768) {
+      setVideoHeight()
+    } else if (videoRef.value) {
+      // Reset to CSS default on desktop
+      videoRef.value.style.height = ''
+    }
+  }
+  
+  window.addEventListener('resize', resizeHandler)
+  
+  // Handle viewport changes on mobile (like when address bar hides/shows)
+  if (window.visualViewport && window.innerWidth <= 768) {
+    viewportHandler = () => {
+      // Keep video height locked to initial viewport height
+      setVideoHeight()
+    }
+    window.visualViewport.addEventListener('resize', viewportHandler)
+    window.visualViewport.addEventListener('scroll', viewportHandler)
+  }
+  
+  // Also handle scroll events to maintain video height on mobile
+  scrollVideoHandler = () => {
+    if (window.innerWidth <= 768) {
+      setVideoHeight()
+    }
+  }
+  window.addEventListener('scroll', scrollVideoHandler, { passive: true })
   
   // Sæt initial video opacity baseret på route
   if (videoRef.value) {
@@ -134,6 +195,16 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  if (scrollVideoHandler) {
+    window.removeEventListener('scroll', scrollVideoHandler)
+  }
+  if (resizeHandler) {
+    window.removeEventListener('resize', resizeHandler)
+  }
+  if (viewportHandler && window.visualViewport) {
+    window.visualViewport.removeEventListener('resize', viewportHandler)
+    window.visualViewport.removeEventListener('scroll', viewportHandler)
+  }
 })
 </script>
 
@@ -274,13 +345,6 @@ html, body {
 
 /* Responsive grid - Keep 12 columns on all screen sizes */
 @media (max-width: 768px) {
-  .background-video {
-    width: auto;
-    height: auto;
-    object-fit: none;
-    object-position: center;
-  }
-
   .container {
     margin: 0;
     padding: 0 20px;
@@ -297,13 +361,6 @@ html, body {
 
 /* iPhone 15 and similar devices */
 @media (max-width: 430px) {
-  .background-video {
-    width: auto;
-    height: auto;
-    object-fit: none;
-    object-position: center;
-  }
-
   .container {
     margin: 0;
     padding: 0 15px;
