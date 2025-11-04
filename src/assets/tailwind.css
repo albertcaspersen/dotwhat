@@ -2,23 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* Custom grid column utilities */
-  .col-1-13 {
-    grid-column: 1 / 13;
-  }
-  
-  .col-1-11 {
-    grid-column: 1 / 11;
-  }
-  
-  /* Custom grid row utilities */
-  .row-2 {
-    grid-row: 2;
-  }
-  
-  .row-3 {
-    grid-row: 3;
-  }
-}
-

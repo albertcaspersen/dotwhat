@@ -1,9 +1,6 @@
 <template>
     <section class="home grid-item grid-home">
-      <h1 
-        ref="titleRef"
-        class="font-bevietnam-bold text-[4rem] font-medium text-white leading-[1.2] m-0 p-0 max-w-[43vw] fixed overflow-hidden pb-[2vh] md:text-[2.5rem] md:max-w-[90vw] md:relative max-[430px]:text-[1.75rem] max-[430px]:max-w-[90vw] max-[430px]:leading-[1.3] max-[430px]:pb-[1vh] max-[430px]:relative max-[393px]:text-[1.65rem] max-[393px]:max-w-[85vw]"
-      >
+      <h1 class="home-title" ref="titleRef">
         <span class="line-wrapper"><span class="line" ref="line1">Smarter domain</span></span>
         <span class="line-wrapper"><span class="line" ref="line2">strategies that strengthen</span></span>
         <span class="line-wrapper"><span class="line" ref="line3">your digital presence.</span></span>
@@ -11,10 +8,7 @@
     </section>
     
     <!-- Description som separat grid item -->
-    <section 
-      ref="descriptionRef"
-      class="grid-item grid-description font-bevietnam text-[1.2rem] font-normal leading-[1.6] text-description-text max-w-[37.5rem] fixed top-[50vh] md:text-[1.1rem] md:max-w-[90vw] md:relative md:top-auto max-[430px]:text-[1rem] max-[430px]:leading-[1.5] max-[430px]:max-w-[90vw] max-[430px]:relative max-[430px]:top-auto max-[393px]:text-[0.95rem] max-[393px]:max-w-[85vw]"
-    >
+    <section class="home-description grid-item grid-description" ref="descriptionRef">
       <!-- Desktop version (3 lines) -->
       <span class="line-wrapper desktop-desc"><span class="line" ref="descLine1">DotWhat is an independent domain consultancy that helps</span></span>
       <span class="line-wrapper desktop-desc"><span class="line" ref="descLine2">companies acquire, sell and optimise their domain</span></span>
@@ -182,6 +176,20 @@ import CompanyLogos from './CompanyLogos.vue'
     margin-bottom: 27vh;
   }
   
+  .home-title {
+    font-family: 'BeVietnamPro-Bold', sans-serif;
+    font-size: 4rem;
+    font-weight: 500;
+    color: white;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    max-width: 43vw;
+    position: fixed;
+    overflow: hidden; 
+    padding-bottom: 2vh;
+  }
+  
   /* Wrapper for each line to control the reveal */
   .line-wrapper {
     display: block;
@@ -200,6 +208,26 @@ import CompanyLogos from './CompanyLogos.vue'
     margin-bottom: 2rem;
   }
 
+  .home-description {
+    font-family: 'BeVietnamPro-Regular', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgb(183, 184, 184);
+    max-width: 600px;
+    position: fixed;
+    top: 50vh;
+  }
+
+  .home-description .line-wrapper {
+    display: block;
+    overflow: hidden;
+  }
+
+  .home-description .line {
+    display: block;
+  }
+
   /* Show desktop version by default, hide mobile */
   .desktop-desc {
     display: block !important;
@@ -216,9 +244,22 @@ import CompanyLogos from './CompanyLogos.vue'
       margin-bottom: 20vh;
     }
 
+    .home-title {
+      font-size: 2.5rem;
+      max-width: 90vw;
+      position: relative;
+    }
+
     .grid-description {
       grid-column: 1 / 13;
       margin-top: 2rem;
+    }
+
+    .home-description {
+      font-size: 1.1rem;
+      max-width: 90vw;
+      position: relative;
+      top: auto;
     }
   }
 
@@ -231,12 +272,28 @@ import CompanyLogos from './CompanyLogos.vue'
       padding: 0 0rem;
     }
 
+    .home-title {
+      font-size: 1.75rem;
+      max-width: 90vw;
+      line-height: 1.3;
+      padding-bottom: 1vh;
+      position: relative;
+    }
+
     .grid-description {
       grid-column: 1 / 11;
       grid-row: 2;
       margin-top: 20rem;
       margin-bottom: 5.5rem;
       padding: 0 0rem;
+    }
+
+    .home-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 90vw;
+      position: relative;
+      top: auto;
     }
 
     /* Show mobile version, hide desktop */
@@ -246,6 +303,19 @@ import CompanyLogos from './CompanyLogos.vue'
 
     .mobile-desc {
       display: block !important;
+    }
+  }
+
+  /* Specifik til iPhone 15 (393px) */
+  @media (max-width: 393px) {
+    .home-title {
+      font-size: 1.65rem;
+      max-width: 85vw;
+    }
+
+    .home-description {
+      font-size: 0.95rem;
+      max-width: 85vw;
     }
   }
   </style>
