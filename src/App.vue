@@ -62,18 +62,6 @@ const handleScroll = () => {
     return
   }
   
-  // På mobil, lad videoen være ved fuld opacity hele tiden
-  if (window.innerWidth <= 768) {
-    if (videoRef.value) {
-      gsap.to(videoRef.value, {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power2.out'
-      })
-    }
-    return
-  }
-  
   if (videoRef.value) {
     const scrollY = window.scrollY
     const fadeStart = 200 // Start fading after 200px scroll
@@ -99,25 +87,6 @@ watch([isDomainAcquisitionsPage], ([isDomainAcq]) => {
 // Watch for route changes og sæt video opacity korrekt
 watch([isContactPage, isClientsPage, isFaqPage, isNewsPage], ([isContact, isClients, isFaq, isNews]) => {
   if (videoRef.value) {
-    // På mobil, sæt videoen til fuld opacity (undtagen contact siden)
-    if (window.innerWidth <= 768) {
-      if (isContact) {
-        gsap.to(videoRef.value, {
-          opacity: 0.3,
-          duration: 0.4,
-          ease: 'power2.out'
-        })
-      } else {
-        gsap.to(videoRef.value, {
-          opacity: 1,
-          duration: 0.4,
-          ease: 'power2.out'
-        })
-      }
-      return
-    }
-    
-    // Desktop behavior
     if (isContact) {
       // Når man navigerer til contact siden, sæt video til afdæmpet
       gsap.to(videoRef.value, {
@@ -214,22 +183,12 @@ onMounted(() => {
   
   // Sæt initial video opacity baseret på route
   if (videoRef.value) {
-    // På mobil, sæt videoen til fuld opacity (undtagen contact siden)
-    if (window.innerWidth <= 768) {
-      if (isContactPage.value) {
-        gsap.set(videoRef.value, { opacity: 0.3 })
-      } else {
-        gsap.set(videoRef.value, { opacity: 1 })
-      }
-    } else {
-      // Desktop behavior
-      if (isContactPage.value) {
-        gsap.set(videoRef.value, { opacity: 0.3 })
-      } else if (isNewsPage.value) {
-        gsap.set(videoRef.value, { opacity: 1 })
-      } else if (isFaqPage.value) {
-        gsap.set(videoRef.value, { opacity: 1 })
-      }
+    if (isContactPage.value) {
+      gsap.set(videoRef.value, { opacity: 0.3 })
+    } else if (isNewsPage.value) {
+      gsap.set(videoRef.value, { opacity: 1 })
+    } else if (isFaqPage.value) {
+      gsap.set(videoRef.value, { opacity: 1 })
     }
   }
 })
@@ -386,10 +345,6 @@ html, body {
 
 /* Responsive grid - Keep 12 columns on all screen sizes */
 @media (max-width: 768px) {
-  .background-color {
-    display: none;
-  }
-
   .container {
     margin: 0;
     padding: 0 20px;

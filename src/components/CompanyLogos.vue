@@ -191,6 +191,7 @@ const logos = ref([
   .company-logos-container {
     height: 12vh;
     margin-top: 2rem;
+    margin-bottom: 15rem;
   }
 
   .logo-item {

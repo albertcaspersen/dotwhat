@@ -586,7 +586,7 @@ onUnmounted(() => {
   .grid-image {
     grid-column: 1 / 13;
     grid-row: 12;
-    margin-top: 2rem;
+    margin-top: 0rem;
     margin-bottom: 3rem;
     height: 40vh;
   }
@@ -594,21 +594,21 @@ onUnmounted(() => {
   .grid-content2 {
     grid-column: 1 / 13;
     grid-row: 13;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 0rem;
   }
 
   .grid-content3 {
     grid-column: 1 / 13;
     grid-row: 14;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
 
   .grid-image2 {
     grid-column: 1 / 13;
     grid-row: 15;
-    margin-top: 2rem;
+    margin-top: 0rem;
     margin-bottom: 5rem;
     height: 35vh;
   }
@@ -616,6 +616,7 @@ onUnmounted(() => {
   .eyebrow-text {
     font-size: 0.9rem;
     margin-bottom: 2vh;
+    margin-top: 5rem;
   }
 
   .eyebrow-text-2 {
@@ -626,6 +627,8 @@ onUnmounted(() => {
   .external-heading {
     font-size: 2rem;
     line-height: 1.4;
+    margin-bottom: 5rem;
+    
   }
 
   .heading2 {
@@ -640,6 +643,10 @@ onUnmounted(() => {
   .quote-author {
     font-size: 1rem;
     margin-top: 1rem;
+  }
+  
+  .business-image2 {
+    margin-bottom: 0rem;
   }
 
   /* Disable parallax on mobile */

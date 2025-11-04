@@ -271,7 +271,7 @@ onUnmounted(() => {
   .grid-glass-heading {
     grid-column: 1 / 13;
     grid-row: 4;
-    margin-top: 5rem;
+    margin-top: 0rem;
     position: relative;
     top: 0;
     font-size: 2rem;
@@ -354,7 +354,7 @@ onUnmounted(() => {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-top: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 10rem;
   }
 
   .card1, .card2, .card3, .card4, .card5, .card6 {
